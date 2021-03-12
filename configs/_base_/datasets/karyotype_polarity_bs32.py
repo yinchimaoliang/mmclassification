@@ -22,7 +22,7 @@ test_pipeline = [
 ]
 data = dict(
     samples_per_gpu=32,
-    workers_per_gpu=2,
+    workers_per_gpu=10,
     train=dict(
         type=dataset_type,
         data_prefix='data/karyotype_polarity',
@@ -36,7 +36,7 @@ data = dict(
     test=dict(
         # replace `data/val` with `data/test` for standard test
         type=dataset_type,
-        data_prefix='data/imagenet/val',
-        ann_file='data/imagenet/meta/val.txt',
+        data_prefix='data/karyotype_polarity',
+        ann_file='data/karyotype_polarity/test.txt',
         pipeline=test_pipeline))
 evaluation = dict(interval=1, metric='accuracy')
