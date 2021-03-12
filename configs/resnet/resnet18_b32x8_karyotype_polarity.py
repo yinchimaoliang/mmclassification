@@ -5,3 +5,9 @@ _base_ = [
 ]
 
 checkpoint_config = dict(interval=10)
+
+# model settings
+model = dict(head=dict(
+    num_classes=2,
+    topk=(1, 2),
+))
