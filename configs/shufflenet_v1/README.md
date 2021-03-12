@@ -2,6 +2,8 @@
 
 ## Introduction
 
+[ALGORITHM]
+
 ```latex
 @inproceedings{zhang2018shufflenet,
   title={Shufflenet: An extremely efficient convolutional neural network for mobile devices},
