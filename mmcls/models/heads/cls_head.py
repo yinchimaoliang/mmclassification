@@ -31,7 +31,6 @@ class ClsHead(BaseHead):
         for _topk in topk:
             assert _topk > 0, 'Top-k should be larger than 0'
         self.topk = topk
-
         self.compute_loss = build_loss(loss)
         self.compute_accuracy = Accuracy(topk=self.topk)
         self.cal_acc = cal_acc
@@ -52,7 +51,7 @@ class ClsHead(BaseHead):
         losses['loss'] = loss
         return losses
 
-    def forward_train(self, cls_score, gt_label):
+    def forward_train(self, cls_score, gt_label, **kwargs):
         losses = self.loss(cls_score, gt_label)
         return losses
 

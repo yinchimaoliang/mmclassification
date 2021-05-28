@@ -72,7 +72,7 @@ class VisionTransformerClsHead(ClsHead):
         pred = list(pred.detach().cpu().numpy())
         return pred
 
-    def forward_train(self, x, gt_label):
+    def forward_train(self, x, gt_label, **kwargs):
         cls_score = self.layers(x)
         losses = self.loss(cls_score, gt_label)
         return losses

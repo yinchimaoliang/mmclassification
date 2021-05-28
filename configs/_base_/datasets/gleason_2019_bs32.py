@@ -1,5 +1,5 @@
 # dataset settings
-dataset_type = 'ImageNet'
+dataset_type = 'PathologyDataset'
 
 img_norm_cfg = dict(
     mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
@@ -21,13 +21,16 @@ test_pipeline = [
     dict(type='Collect', keys=['img'])
 ]
 data = dict(
-    samples_per_gpu=32,
+    samples_per_gpu=10,
     workers_per_gpu=10,
     train=dict(
         type=dataset_type,
         data_prefix='data/gleason_2019',
         classes=[0, 1, 2, 3],
         ann_file='data/gleason_2019/train.txt',
+        # ann_file=['data/gleason_2019/train.txt',
+        # 'data/gleason_2019/train_1.txt', 'data/gleason_2019/train_3.txt'
+        # , 'data/gleason_2019/train_4.txt'],
         pipeline=train_pipeline),
     val=dict(
         type=dataset_type,

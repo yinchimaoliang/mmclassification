@@ -30,8 +30,8 @@ def main():
         print(f'{name} finished')
 
     with open(os.path.join(tar_path), 'w') as f:
-        for ann in anns:
-            f.write(f'{os.path.join(img_dir, name)} {ann}\n')
+        for i, ann in enumerate(anns):
+            f.write(f'{os.path.join(img_dir, names[i])} {ann}\n')
 
 
 if __name__ == '__main__':

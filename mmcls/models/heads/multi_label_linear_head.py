@@ -41,7 +41,7 @@ class MultiLabelLinearClsHead(MultiLabelClsHead):
     def init_weights(self):
         normal_init(self.fc, mean=0, std=0.01, bias=0)
 
-    def forward_train(self, x, gt_label):
+    def forward_train(self, x, gt_label, **kwargs):
         gt_label = gt_label.type_as(x)
         cls_score = self.fc(x)
         losses = self.loss(cls_score, gt_label)
