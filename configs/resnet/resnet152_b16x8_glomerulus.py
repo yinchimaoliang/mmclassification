@@ -20,4 +20,4 @@ model = dict(
         loss=dict(type='CrossEntropyLoss', loss_weight=1.0),
     ))
 evaluation = dict(interval=1, save_best="auto", metric='accuracy', metric_options={'topk': (1, )})
-checkpoint_config = dict(interval=1)
+checkpoint_config = dict(interval=-1, save_last=True)
