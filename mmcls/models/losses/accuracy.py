@@ -58,6 +58,10 @@ def accuracy_torch(pred, target, topk=(1, ), thrs=0.):
     num = pred.size(0)
     pred_score, pred_label = pred.topk(maxk, dim=1)
     pred_label = pred_label.t()
+    num_classes = pred.shape[1]
+    for class_id in range(num_classes):
+        correct = torch.bitwise_and((pred_label == class_id).squeeze(), (target == class_id)).sum()    
+        print(f'class_{class_id}: {correct * 100. / num}')
     correct = pred_label.eq(target.view(1, -1).expand_as(pred_label))
     for k in topk:
         res_thr = []

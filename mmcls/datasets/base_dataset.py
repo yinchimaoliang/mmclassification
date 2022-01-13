@@ -117,7 +117,7 @@ class BaseDataset(Dataset, metaclass=ABCMeta):
     def evaluate(self,
                  results,
                  metric='accuracy',
-                 metric_options=None,
+                 metric_options={'topk': (1,)},
                  logger=None):
         """Evaluate the dataset.
 
