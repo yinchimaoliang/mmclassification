@@ -23,27 +23,21 @@ data = dict(
     workers_per_gpu=2,
     train=dict(
         type=dataset_type,
-        data_prefix='data/glomerulus/universal/train/SS',
-        ann_file='data/glomerulus/universal/train/SS/labels.pkl',
-        classes=[
-            'background', 'SS'
-        ],
+        data_prefix='data/glomerulus/universal/train/GS',
+        ann_file='data/glomerulus/universal/train/GS/labels.pkl',
+        classes=['background', 'GS'],
         pipeline=train_pipeline),
     val=dict(
         type=dataset_type,
-        data_prefix='data/glomerulus/universal/val/SS',
-        ann_file='data/glomerulus/universal/val/SS/labels.pkl',
+        data_prefix='data/glomerulus/universal/val/GS',
+        ann_file='data/glomerulus/universal/val/GS/labels.pkl',
         pipeline=test_pipeline,
-        classes=[
-            'background', 'SS'
-        ],
+        classes=['background', 'GS'],
         test_mode=True),
     test=dict(
         type=dataset_type,
-        data_prefix='data/glomerulus/universal/val/SS',
-        ann_file='data/glomerulus/universal/val/SS/labels.pkl',
+        data_prefix='data/glomerulus/universal/val/GS',
+        ann_file='data/glomerulus/universal/val/GS/labels.pkl',
         pipeline=test_pipeline,
-        classes=[
-            'background', 'SS'
-        ],
+        classes=['background', 'GS'],
         test_mode=True))

@@ -1,6 +1,6 @@
 _base_ = [
     '../_base_/models/resnet18_cifar.py',
-    '../_base_/datasets/glomerulus_bs16_E.py',
+    '../_base_/datasets/glomerulus_bs16_instance_SS.py',
     '../_base_/schedules/cifar10_bs128.py', '../_base_/default_runtime.py'
 ]
 
