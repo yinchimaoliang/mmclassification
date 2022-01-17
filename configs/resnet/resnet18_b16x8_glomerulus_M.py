@@ -1,6 +1,6 @@
 _base_ = [
     '../_base_/models/resnet18_cifar.py',
-    '../_base_/datasets/glomerulus_bs16_C.py',
+    '../_base_/datasets/glomerulus_bs16_M.py',
     '../_base_/schedules/cifar10_bs128.py', '../_base_/default_runtime.py'
 ]
 
@@ -18,5 +18,4 @@ model = dict(
         num_classes=2,
         in_channels=512,
         loss=dict(type='FocalLoss', loss_weight=1.0),
-        topk=(1),
     ))

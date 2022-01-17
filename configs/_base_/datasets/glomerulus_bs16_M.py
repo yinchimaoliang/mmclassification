@@ -5,7 +5,7 @@ img_norm_cfg = dict(
     std=[68.170, 65.392, 70.418],
     to_rgb=False)
 train_pipeline = [
-    dict(type='Resize', size=(256, 256)),
+    dict(type='Resize', size=(1024, 1024)),
     dict(type='RandomFlip', flip_prob=0.5, direction='horizontal'),
     dict(type='Normalize', **img_norm_cfg),
     dict(type='ImageToTensor', keys=['img']),
@@ -13,7 +13,7 @@ train_pipeline = [
     dict(type='Collect', keys=['img', 'gt_label'])
 ]
 test_pipeline = [
-    dict(type='Resize', size=(256, 256)),
+    dict(type='Resize', size=(1024, 1024)),
     dict(type='Normalize', **img_norm_cfg),
     dict(type='ImageToTensor', keys=['img']),
     dict(type='Collect', keys=['img'])
@@ -23,30 +23,27 @@ data = dict(
     workers_per_gpu=2,
     train=dict(
         type=dataset_type,
-        data_prefix='data/glomerulus/train',
-        ann_file='data/glomerulus/train/labels.pkl',
+        data_prefix='data/glomerulus/universal/train/M',
+        ann_file='data/glomerulus/universal/train/M/labels.pkl',
         classes=[
-            'GS', 'SS+M', 'M', 'GM', 'N', 'C', 'SS', 'E+M+SS', 'E+SS', 'C+M',
-            'E', 'C+E'
+            'background', 'M'
         ],
         pipeline=train_pipeline),
     val=dict(
         type=dataset_type,
-        data_prefix='data/glomerulus/val',
-        ann_file='data/glomerulus/val/labels.pkl',
+        data_prefix='data/glomerulus/universal/val/M',
+        ann_file='data/glomerulus/universal/val/M/labels.pkl',
         pipeline=test_pipeline,
         classes=[
-            'GS', 'SS+M', 'M', 'GM', 'N', 'C', 'SS', 'E+M+SS', 'E+SS', 'C+M',
-            'E', 'C+E'
+            'background', 'M'
         ],
         test_mode=True),
     test=dict(
         type=dataset_type,
-        data_prefix='data/glomerulus/val',
-        ann_file='data/glomerulus/val/labels.pkl',
+        data_prefix='data/glomerulus/universal/val/M',
+        ann_file='data/glomerulus/universal/val/M/labels.pkl',
         pipeline=test_pipeline,
         classes=[
-            'GS', 'SS+M', 'M', 'GM', 'N', 'C', 'SS', 'E+M+SS', 'E+SS', 'C+M',
-            'E', 'C+E'
+            'background', 'M'
         ],
         test_mode=True))

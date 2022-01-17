@@ -5,7 +5,7 @@ img_norm_cfg = dict(
     std=[68.170, 65.392, 70.418],
     to_rgb=False)
 train_pipeline = [
-    dict(type='Resize', size=(256, 256)),
+    dict(type='Resize', size=(1024, 1024)),
     dict(type='RandomFlip', flip_prob=0.5, direction='horizontal'),
     dict(type='Normalize', **img_norm_cfg),
     dict(type='ImageToTensor', keys=['img']),
@@ -13,7 +13,7 @@ train_pipeline = [
     dict(type='Collect', keys=['img', 'gt_label'])
 ]
 test_pipeline = [
-    dict(type='Resize', size=(256, 256)),
+    dict(type='Resize', size=(1024, 1024)),
     dict(type='Normalize', **img_norm_cfg),
     dict(type='ImageToTensor', keys=['img']),
     dict(type='Collect', keys=['img'])
@@ -26,7 +26,7 @@ data = dict(
         data_prefix='data/glomerulus/universal/train/C',
         ann_file='data/glomerulus/universal/train/C/labels.pkl',
         classes=[
-            'C'
+            'background', 'C'
         ],
         pipeline=train_pipeline),
     val=dict(
@@ -35,7 +35,7 @@ data = dict(
         ann_file='data/glomerulus/universal/val/C/labels.pkl',
         pipeline=test_pipeline,
         classes=[
-            'C'
+            'background', 'C'
         ],
         test_mode=True),
     test=dict(
@@ -44,6 +44,6 @@ data = dict(
         ann_file='data/glomerulus/universal/val/C/labels.pkl',
         pipeline=test_pipeline,
         classes=[
-            'C'
+            'background', 'C'
         ],
         test_mode=True))
